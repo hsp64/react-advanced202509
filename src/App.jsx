@@ -3,11 +3,9 @@ import './App.css';
 import Meals from "./components/Meals/Meals";
 import Cart from './components/Cart/Cart.jsx';
 import {useState} from 'react';
-import CartContext from "./context/cart-context.js";
+import CartContext from './context/cart-context.js';
 
 const App = () => {
-
-  const x = '하하호호';
 
   // 장바구니 모달을 여닫는 상태변수
   const [cartIsShown, setCartIsShown] = useState(false);
@@ -21,15 +19,14 @@ const App = () => {
   return <>
     {/* value속성에 하위컴포넌트들이 공유할 상태값들을 명시 */}
     <CartContext.Provider value={{
-      cartName: '카트카트',
-      amount: 10,
-      isOpen: false
+      openModal: handleShowCart,
+      closeModal: handleHideCart
     }}>
-    {cartIsShown && <Cart onClose={handleHideCart} />}
-    <Header onShowCart={handleShowCart} />
-    <div id="main">
-      <Meals />
-    </div>
+      {cartIsShown && <Cart />}
+      <Header />
+      <div id="main">
+        <Meals />
+      </div>
     </CartContext.Provider>
   </>;
 };
