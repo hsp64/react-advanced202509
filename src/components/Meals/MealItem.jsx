@@ -1,23 +1,29 @@
 import styles from './MealItem.module.scss';
 import MealItemForm from './MealItemForm';
+import CartContext from "../../context/cart-context.js";
+import {useContext} from "react";
 
-const MealItem = ({ id, price, description, name }) => {
-  const { meal, description: desc, price: priceStyle } = styles;
+const MealItem = ({id, price, description, name}) => {
 
-  const formatPrice = new Intl.NumberFormat('ko-KR').format(price);
+    const x = useContext(CartContext);
+    console.log('MealItem x: ', x);
 
-  return (
-    <li className={meal}>
-      <div>
-        <h3>{name}</h3>
-        <div className={desc}>{description}</div>
-        <div className={priceStyle}>{formatPrice}원</div>
-      </div>
-      <div>
-        <MealItemForm id={id} />
-      </div>
-    </li>
-  );
+    const {meal, description: desc, price: priceStyle} = styles;
+
+    const formatPrice = new Intl.NumberFormat('ko-KR').format(price);
+
+    return (
+        <li className={meal}>
+            <div>
+                <h3>{name}</h3>
+                <div className={desc}>{description}</div>
+                <div className={priceStyle}>{formatPrice}원</div>
+            </div>
+            <div>
+                <MealItemForm id={id}/>
+            </div>
+        </li>
+    );
 };
 
 export default MealItem;
