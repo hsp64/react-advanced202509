@@ -1,6 +1,6 @@
 import Input from '../UI/Input';
 import styles from './MealItemForm.module.scss';
-import {useRef} from "react";
+import {useRef} from 'react';
 
 const MealItemForm = ({id, onAddToCart}) => {
 
@@ -8,7 +8,7 @@ const MealItemForm = ({id, onAddToCart}) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        onAddToCart(inputRef.current.value);
+        onAddToCart(+inputRef.current.value);
     };
 
     return (
