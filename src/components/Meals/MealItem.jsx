@@ -1,6 +1,5 @@
 import styles from './MealItem.module.scss';
 import MealItemForm from './MealItemForm';
-import cart from '../Cart/Cart.jsx';
 import {useContext} from 'react';
 import CartContext from '../../context/cart-context.js';
 
